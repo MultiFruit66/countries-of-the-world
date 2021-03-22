@@ -1,0 +1,10 @@
+{
+  "type": "posts",
+  "data": {
+    "title": "Загружаемый пост",
+    "text": "Тело поста, ........",
+    "photo": "https://i.imgur.com/Clfg7ij.jpg",
+    "country": 3,
+    "author": "Admin"
+  }
+}
