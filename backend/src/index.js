@@ -38,12 +38,9 @@ app.post('/api', verifyRequest, async function(req, res){
   const jsonRPCRequest = jsonrpc.parseObject(req.jsonrpc);
 
   if(!jsonRPCRequest.length){
-    console.log(1)
     const jsonRPCResponse = await callMethod(jsonRPCRequest, req);
-    console.log(123)
     res.json(jsonRPCResponse);
   } else {
-    console.log(1)
     const jsonRPCResponse = [];
     for(let i = 0; i < jsonRPCRequest; i++){
       let response = await callMethod(jsonRPCRequest, req);

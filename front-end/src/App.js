@@ -2443,7 +2443,7 @@ class Header extends React.Component {
     return (
       <div className="navbar">
         <div className="nav-leftbar">
-          <Link className="navlink-static" to='/' style={{ fontWeight: 'bold' }}>Курсовой проект</Link>
+          <Link className="navlink-static" to='/' style={{ fontWeight: 'bold' }}>Годовой проект</Link>
         </div>
         <div className="nav-center">
           <Link className={'navlink '+(this.props.path === "/" ? "navlink-active" : "")} to="/">Главная</Link>

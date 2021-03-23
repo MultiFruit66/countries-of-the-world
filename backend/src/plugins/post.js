@@ -1,17 +1,17 @@
 const db = require('./../database.js');
 
 exports['post.get'] = async(data, { userData }) => {
-  console.log(!data.filter, typeof data.sort === 'undefined', typeof data.limit === 'undefined')
-  if(!data.filter || typeof data.sort === 'undefined' || typeof data.limit === 'undefined') return { type: 'error', code: -32602, message: 'Invalid params' };
-  console.log('after if')
+  if(!data.filter || typeof data.sort === 'undefined' || typeof data.limit === 'undefined')
+    return { type: 'error', code: -32602, message: 'Invalid params' };
+
   const filteredData = db.filterData(data.filter, data.sort, data.limit);
   const sqlQuery = "SELECT * FROM posts" + filteredData;
-  console.log(db.connection.onpromise, sqlQuery)
+
   let { results, fields } = await db.connection.onpromise(sqlQuery, [])
   .catch((message) => {
-    console.log(message)
     return { type: 'error', code: -101, message: 'Database error: ' + message };
   });
+
   return { type: 'success', result: results };
 }
 
@@ -20,7 +20,7 @@ exports['post.create'] = async(data, { userData }) => {
   if(!userData.id) return { type: 'error', code: -403, message: 'Forbidden' };
   const isAdmin = db.isAdmin(userData.id);
   if(!isAdmin) return { type: 'error', code: -403, message: 'Forbidden' };
-  ////
+
   let { results: r1 } = await db.connection.onpromise("INSERT INTO posts(pName, pText, pPhoto, pCountry, pAuthor) VALUES (?, ?, ?, ?, ?)", [data.create.title, data.create.text, data.create.photo, data.create.country, data.create.author])
   .catch((message) => {
     return { type: 'error', code: -101, message: 'Database error: ' + message };
@@ -33,7 +33,7 @@ exports['post.edit'] = async(data, { userData }) => {
   if(!userData.id) return { type: 'error', code: -403, message: 'Forbidden' };
   const isAdmin = db.isAdmin(userData.id);
   if(!isAdmin) return { type: 'error', code: -403, message: 'Forbidden' };
-  ////
+
   await db.connection.onpromise("UPDATE posts SET "+db.parseParams(data.edit)+" WHERE pId = ?", [data.post])
   .catch((message) => {
     return { type: 'error', code: -101, message: 'Database error: ' + message };
@@ -46,7 +46,7 @@ exports['post.delete'] = async(data, { userData }) => {
   if(!userData.id) return { type: 'error', code: -403, message: 'Forbidden' };
   const isAdmin = db.isAdmin(userData.id);
   if(!isAdmin) return { type: 'error', code: -403, message: 'Forbidden' };
-  ////
+
   await db.connection.onpromise("DELETE FROM posts WHERE pId = ?", [data.post])
   .catch((message) => {
     return { type: 'error', code: -101, message: 'Database error: ' + message };
