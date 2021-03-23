@@ -436,6 +436,7 @@ $color-text-gray: rgb(155, 155, 150);
   display: inline-block;
   width: 192px;
   height: 192px;
+  object-fit: cover;
   border-radius: 12px;
   padding: 6px;
 }

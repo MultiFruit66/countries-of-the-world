@@ -186,7 +186,7 @@ class RegisterPage extends React.Component {
         name: this.state.name,
         surname: this.state.surname,
         pass: this.state.pass,
-        avatar: 'https://i.imgur.com/85GtiDX.jpg'
+        avatar: 'https://i.gifer.com/6Owq.gif'
       },
       id: Math.floor(Date.now() / 1000)
     }
@@ -202,7 +202,7 @@ class RegisterPage extends React.Component {
       uSurname: this.state.surname,
       uAdmin: 0,
       uPass: this.state.pass,
-      uAvatar: 'https://i.imgur.com/85GtiDX.jpg'
+      uAvatar: 'https://i.gifer.com/6Owq.gif'
     };
     authInfo.jwt = jsonRPCResponse.jwt;
     console.log(JSON.stringify(authInfo));
