@@ -195,7 +195,7 @@ class RegisterPage extends React.Component {
     notify('Вы успешно зарегистрированы!');
     authInfo.isAuthenticated = true;
     authInfo.data = {
-      uId: jsonRPCResponse.id,
+      uId: jsonRPCResponse.result.id,
       uUsername: this.state.username,
       uEmail: this.state.email,
       uName: this.state.name,
