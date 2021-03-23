@@ -461,9 +461,6 @@ $color-text-gray: rgb(155, 155, 150);
   background-color: red;
   color: #fff;
 }
-.profile-reg{
-
-}
 .article-info{
   padding: 0 15px;
   display: flex;
@@ -692,9 +689,6 @@ $color-text-gray: rgb(155, 155, 150);
 }
 .country-info-title{
   font-size: 1.2rem;
-}
-.country-info{
-
 }
 .dynamic-info{
   margin-top: 25px;
